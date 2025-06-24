@@ -10,7 +10,6 @@ import 'package:you_app/service/profile/profile_service.dart';
 import 'package:you_app/view/profile/interest_form_view.dart';
 import 'package:you_app/view/profile/widgets/profile_info.dart';
 import 'package:you_app/view/profile/widgets/profile_skeleton.dart';
-import 'package:you_app/widgets/app_cached_image.dart';
 import 'package:you_app/widgets/app_dropdown.dart';
 import 'package:you_app/widgets/widgets.dart';
 import '../../model/user/user_model.dart';
@@ -73,10 +72,10 @@ class _ProfileViewState extends State<ProfileView> {
                             children: [
                               Stack(
                                 children: [
-                                  AppCachedImage(
+                                  AppCard(
                                     height: 190,
                                     width: double.infinity,
-                                    emptyWidget: SizedBox(),
+                                    child: SizedBox(),
                                   ),
                                   Positioned(
                                     left: 16.0,
@@ -96,10 +95,11 @@ class _ProfileViewState extends State<ProfileView> {
                                           textStyle: AppTextStyle.regularStyle
                                               .copyWith(fontSize: 14.0),
                                         ),
-                                        SpaceHeight(10.0),
+
                                         if (AppGlobalFunc.getHoroscope(
                                           result?.birthDay,
-                                        ).isNotEmpty)
+                                        ).isNotEmpty) ...[
+                                          SpaceHeight(10.0),
                                           Row(
                                             spacing: 15.0,
                                             children: [
@@ -174,6 +174,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                 ),
                                             ],
                                           ),
+                                        ],
                                       ],
                                     ),
                                   ),
